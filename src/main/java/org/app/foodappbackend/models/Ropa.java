@@ -2,10 +2,7 @@ package org.app.foodappbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +18,7 @@ public class Ropa {
 
     private String description;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String categoria;
 
     @Column

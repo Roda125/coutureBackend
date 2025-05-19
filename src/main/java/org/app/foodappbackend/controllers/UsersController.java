@@ -1,18 +1,12 @@
 package org.app.foodappbackend.controllers;
 
-import org.app.foodappbackend.dto.ApiDelivery;
-import org.app.foodappbackend.dto.CreateUserRequest;
-import org.app.foodappbackend.dto.LoginRequest;
-import org.app.foodappbackend.dto.LoginResponse;
 import org.app.foodappbackend.models.Users;
 import org.app.foodappbackend.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -21,10 +15,6 @@ public class UsersController {
 
     @Autowired
     private UsersService userService;
-
-    public UsersController(UsersService userService) {
-        this.userService = UsersController.this.userService;
-    }
 
     @PostMapping
     public ResponseEntity<Users> registerUser(@RequestBody Users users) {

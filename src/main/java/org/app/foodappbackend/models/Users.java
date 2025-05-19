@@ -4,7 +4,6 @@ package org.app.foodappbackend.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,32 +22,56 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
+//
+//    private Set<Ropa> newHashSet;
 
-    private Set<Ropa> newHashSet;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "user_Ropas",
+            name = "user_ropas",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "Ropa_id")
     )
     @JsonManagedReference
     private Set<Ropa> Ropas = new HashSet<>();
-    private Collection<Object> ropas;
 
-    public Users() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-
-    public Collection<Object> getRopas() {
-        return ropas;
+    public Long getId() {
+        return id;
     }
 
-    public void setRopas(Collection<Object> ropas) {
-        this.ropas = ropas;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+//    public Set<Ropa> getNewHashSet() {
+//        return newHashSet;
+//    }
+//
+//    public void setNewHashSet(Set<Ropa> newHashSet) {
+//        this.newHashSet = newHashSet;
+//    }
+
+    public Set<Ropa> getRopas() {
+        return Ropas;
+    }
+
+    public void setRopas(Set<Ropa> ropas) {
+        Ropas = ropas;
     }
 }
