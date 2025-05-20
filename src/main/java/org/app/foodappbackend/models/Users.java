@@ -22,8 +22,6 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
-//
-//    private Set<Ropa> newHashSet;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -58,14 +56,6 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
-
-//    public Set<Ropa> getNewHashSet() {
-//        return newHashSet;
-//    }
-//
-//    public void setNewHashSet(Set<Ropa> newHashSet) {
-//        this.newHashSet = newHashSet;
-//    }
 
     public Set<Ropa> getRopas() {
         return Ropas;
