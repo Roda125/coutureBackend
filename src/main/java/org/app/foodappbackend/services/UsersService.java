@@ -1,26 +1,27 @@
 package org.app.foodappbackend.services;
 
+import org.app.foodappbackend.dto.CreateUserRequest;
 import org.app.foodappbackend.models.Users;
 import org.app.foodappbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+
 
     @Autowired
-    public UsersService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UsersService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+
     }
 
-    public Users getUsersByEmail(String email) {
+    public Optional<Users> getUsersByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
@@ -36,10 +37,22 @@ public class UsersService {
         userRepository.deleteById(id);
     }
 
-    public Users registerUser(Users users) {
-        // Cifra la contraseña antes de guardar
-        String encodedPassword = passwordEncoder.encode(users.getPassword());
-        users.setPassword(encodedPassword);
-        return userRepository.save(users);
+    public Users registerUser(CreateUserRequest new_user) {
+
+        Optional<Users> prov = this.userRepository.findByEmail(new_user.getEmail());
+
+        if (prov.isEmpty()) {
+            Users user = new Users();
+
+            user.setNombre(new_user.getNombre());
+            user.setEmail(new_user.getEmail());
+            user.setPassword(new_user.getPassword());
+
+            return userRepository.save(user);
+        }
+        else {
+            throw new IllegalArgumentException("Usuario ya existe en la base de datos");
+        }
     }
+
 }

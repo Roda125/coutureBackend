@@ -1,14 +1,15 @@
 package org.app.foodappbackend.dto;
 
-import java.util.Set;
-
 public class CreateUserRequest {
     private String email;
-    private String image;
+    private String nombre;
     private String password;
-    private Set<Long> RopaIds; // IDs de los Ropas asociados
 
-    // Getters y Setters
+    public CreateUserRequest(String email, String nombre, String password) {
+        this.email = email;
+        this.nombre = nombre;
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;
@@ -18,12 +19,12 @@ public class CreateUserRequest {
         this.email = email;
     }
 
-    public String getImage() {
-        return image;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getPassword() {
@@ -32,13 +33,5 @@ public class CreateUserRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<Long> getRopaIds() {
-        return RopaIds;
-    }
-
-    public void setRopaIds(Set<Long> RopaIds) {
-        this.RopaIds = RopaIds;
     }
 }

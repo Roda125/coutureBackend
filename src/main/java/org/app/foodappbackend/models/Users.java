@@ -22,6 +22,9 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String nombre;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -63,5 +66,13 @@ public class Users {
 
     public void setRopas(Set<Ropa> ropas) {
         Ropas = ropas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

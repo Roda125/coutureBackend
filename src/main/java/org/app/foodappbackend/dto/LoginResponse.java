@@ -3,7 +3,6 @@ package org.app.foodappbackend.dto;
 import org.app.foodappbackend.models.Ropa;
 import org.app.foodappbackend.models.Users;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
